@@ -37,6 +37,6 @@ point = "0";
             websocket.send(msg);
          }
 
-         function sendCMD(move) {
+         function sendCMDmove(move) {
              websocket.send('{"cmd":"move","parm":"' + move + '","posx":"' + posx + '","posz":"' + posz +'","posy":"' + posy + '","point":"' + point + '"}')
          }

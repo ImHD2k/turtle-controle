@@ -14,27 +14,19 @@
    <body onload="openConnection();" onunload="closeConnection();">
       <div>
          <p>Send CMD: <input id="messageText" type="text"/>
-            <input id="sendButton" type="button" value="Send"
-               onclick="sendMessage();"/>
-            <input id="sendCMD" type="button" value="Up"
-            onclick="sendCMD('up');"/>
-            <input id="sendCMD" type="button" value="Down"
-            onclick="sendCMD('down');"/>
-            <input id="sendCMD" type="button" value="Left"
-            onclick="sendCMD('left');"/>
-            <input id="sendCMD" type="button" value="Right"
-            onclick="sendCMD('right');"/>
-            <input id="sendCMD" type="button" value="Back"
-            onclick="sendCMD('back');"/>
-            <input id="sendCMD" type="button" value="Forward"
-            onclick="sendCMD('forward');"/>
-            <input id="sendCMD" type="button" value="Getblock"
-            onclick="sendCMD('');"/>
+            <input id="sendButton" type="button" value="Send" onclick="sendMessage();"/>
+            <input id="sendCMD" type="button" value="Up" onclick="sendCMDmove('up');"/>
+            <input id="sendCMD" type="button" value="Down" onclick="sendCMDmove('down');"/>
+            <input id="sendCMD" type="button" value="Left" onclick="sendCMDmove('left');"/>
+            <input id="sendCMD" type="button" value="Right" onclick="sendCMDmove('right');"/>
+            <input id="sendCMD" type="button" value="Back" onclick="sendCMDmove('back');"/>
+            <input id="sendCMD" type="button" value="Forward" onclick="sendCMDmove('forward');"/>
+            <input id="sendCMD" type="button" value="Getblock" onclick="sendCMD('');"/>
             <div id="p1"></div>
          </p>
          <div id="fromServer"></div>
          <div id="text"></div>
-         <script src="test.js"></script>
+         <script src="threeview.js"></script>
       </div>
    </body>
 </html>

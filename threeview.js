@@ -15,14 +15,16 @@ function init()
 
     scene = new THREE.Scene();
     
-    var cubeGeometry = new THREE.BoxGeometry (10,10,10);
-    var cubeMaterial = new THREE.MeshBasicMaterial ({color: 0x1ec876});
-    cube = new THREE.Mesh (cubeGeometry, cubeMaterial);
-    cube2 = new THREE.Mesh (cubeGeometry, cubeMaterial);
+    // start
 
-    cube.position.set (0, 0, 0);
-    cube.position.set (0, 0, 10);
-    scene.add (cube, cube2);
+    function createCube(posx, posy, posz) {
+        cube = new THREE.Mesh(new THREE.BoxGeometry(10,10,10));
+        cube.position.set(posx, posy, posz)
+        scene.add(cube);
+    }
+    createCube(posx,posy,posz)
+
+    // end
 
     camera = new THREE.PerspectiveCamera (45, width/height, 1, 10000);
     camera.position.y = 160;
