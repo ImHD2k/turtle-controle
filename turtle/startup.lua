@@ -1,6 +1,6 @@
 os.loadAPI('json')
 while true do
-local ws, err = http.websocket("ws://23b2dd33634d.ngrok.io")
+local ws, err = http.websocket("ws://475b2262f7de.ngrok.io")
     if err then
         print(err)
     end
