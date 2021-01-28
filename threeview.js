@@ -49,15 +49,15 @@ function updateTurtlePos() {
     
     // end
 }
-function updateWorld(type,name,posx,posz) {
+function updateWorld(type,name,tposx,tposz) {
+    if (type == 'forward') {
+        var cube = new THREE.Mesh(new THREE.BoxGeometry(1,1,1));
+        cube.position.set(tposx, posy, tposz);
+        scene.add(cube);
+    }
     if (type == 'down') {
         var cube = new THREE.Mesh(new THREE.BoxGeometry(1,1,1));
         cube.position.set(posx, posy - 1, posz);
-        scene.add(cube);
-    }
-    if (type == 'forward') {
-        var cube = new THREE.Mesh(new THREE.BoxGeometry(1,1,1));
-        cube.position.set(posx, posy, posz);
         scene.add(cube);
     }
     if (type == 'up') {

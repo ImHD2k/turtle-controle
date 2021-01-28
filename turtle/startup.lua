@@ -1,6 +1,6 @@
 os.loadAPI('json')
 while true do
-local ws, err = http.websocket("ws://81bae405cdee.ngrok.io")
+local ws, err = http.websocket("ws://bdcfd8093594.ngrok.io")
     if err then
         print(err)
     end
@@ -13,13 +13,13 @@ local ws, err = http.websocket("ws://81bae405cdee.ngrok.io")
             local success, dataup = turtle.inspectUp()
             local success, datadown = turtle.inspectDown()
             if (cmd.point == '0') then
-                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockposx=posx + 1, blockposz=posz, blockup=dataup.name, blockuppos=posy + 1, blockdown=datadown.name, blockdownpos=posy - 1, point=point}))
+                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx + 1, blockposz=posz,point=point}))
             elseif (cmd.point == '1') then
-                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockpos=posz + 1,blockposx=posz, blockup=dataup.name, blockuppos=posy + 1, blockdown=datadown.name, blockdownpos=posy - 1, point=point}))
+                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx, blockposz=posz + 1,point=point}))
             elseif (cmd.point == '2') then
-                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockpos=posx - 1,blockposz=posz, blockup=dataup.name, blockuppos=posy + 1, blockdown=datadown.name, blockdownpos=posy - 1, point=point}))
+                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx - 1, blockposz=posz,point=point}))
             elseif (cmd.point == '3') then
-                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockpos=posz - 1,blockposx=posz, blockup=dataup.name, blockuppos=posy + 1, blockdown=datadown.name, blockdownpos=posy - 1, point=point}))
+                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx, blockposz=posz - 1,point=point}))
             end
         end
         local message = ws.receive()

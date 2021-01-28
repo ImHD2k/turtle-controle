@@ -23,13 +23,13 @@ point = "0";
                   document.getElementById("p1").innerHTML = 'posX : ' + obj.posx + ' | posY : ' + obj.posy + ' | posZ : ' + obj.posz + ' | point : ' + obj.point;
                   updateTurtlePos();
                   if (obj.blockdown) {
-                     updateWorld('down',obj.blockdown)
-                  } 
-                  if (obj.block) {
-                     updateWorld('forward',obj.block, obj.blockupposx, obj.blockupposz)
+                     updateWorld('down',obj.blockdown, obj.blockposx, obj.blockposz)
                   }
                   if (obj.blockup) {
-                     updateWorld('up',obj.blockup)
+                     updateWorld('up',obj.blockup, obj.blockposx, obj.blockposz)
+                  }
+                  if (obj.block) {
+                     updateWorld('forward',obj.block, obj.blockposx, obj.blockposz)
                   }
                } else if (obj.type == 'message') {
                   document.getElementById("p1").innerHTML = 'name : ' + obj.name + ' | message : ' + obj.message;
