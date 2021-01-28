@@ -10,3 +10,7 @@ After you had download ngrok, then launche it in a cmd with the command "```ngro
 # Link
 
 Download ngrok at : "https://ngrok.com/"
+
+# On the turtle
+
+execute : "```pastebin get 4nRg9CHU json```"
