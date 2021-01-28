@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+   <!--<link rel="stylesheet" href="style.css">-->
    <head>
       <script src="js/three.js"></script>
       <script src="js/OrbitControls.js"></script>
@@ -13,16 +14,16 @@
    </head>
    <body onload="openConnection();" onunload="closeConnection();">
       <div>
-         <p>Send CMD: <input id="messageText" type="text"/>
-            <input id="sendButton" type="button" value="Send" onclick="sendMessage();"/>
-            <input id="sendCMD" type="button" value="Up" onclick="sendCMDmove('up');"/>
-            <input id="sendCMD" type="button" value="Down" onclick="sendCMDmove('down');"/>
-            <input id="sendCMD" type="button" value="Left" onclick="sendCMDmove('left');"/>
-            <input id="sendCMD" type="button" value="Right" onclick="sendCMDmove('right');"/>
-            <input id="sendCMD" type="button" value="Back" onclick="sendCMDmove('back');"/>
-            <input id="sendCMD" type="button" value="Forward" onclick="sendCMDmove('forward');"/>
-            <input id="sendCMD" type="button" value="Getblock" onclick="sendCMD('');"/>
-            <input id="sendCMD" type="button" value="Update" onclick="init();"/>
+         <div style="position: absolute;width:100%;height:50px;text-align: center; color:white;" class="ui">
+         <p class="ui">Send CMD: <input id="messageText" type="text"/>
+            <input class="ui" id="sendButton" type="button" value="Send" onclick="sendMessage();"/>
+            <input class="ui" id="sendCMD" type="button" value="Up" onclick="sendCMDmove('up');"/>
+            <input class="ui" id="sendCMD" type="button" value="Down" onclick="sendCMDmove('down');"/>
+            <input class="ui" id="sendCMD" type="button" value="Left" onclick="sendCMDmove('left');"/>
+            <input class="ui" id="sendCMD" type="button" value="Right" onclick="sendCMDmove('right');"/>
+            <input class="ui" id="sendCMD" type="button" value="Back" onclick="sendCMDmove('back');"/>
+            <input class="ui" id="sendCMD" type="button" value="Forward" onclick="sendCMDmove('forward');"/>
+            <input class="ui" id="sendCMD" type="button" value="Getblock" onclick="sendCMDgetblock('');"/>
             <div id="p1"></div>
          </p>
          <div id="fromServer"></div>

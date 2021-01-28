@@ -1,0 +1,14 @@
+body {
+  overflow: hidden;
+  margin: 0;
+}
+
+.ui {
+  position: absolute;
+  top: 5%;
+  text-align: center;
+}
+
+button{
+  margin: 20px;
+}

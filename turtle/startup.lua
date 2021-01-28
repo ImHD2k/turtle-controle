@@ -1,18 +1,26 @@
 os.loadAPI('json')
 while true do
-local ws, err = http.websocket("ws://475b2262f7de.ngrok.io")
+local ws, err = http.websocket("ws://81bae405cdee.ngrok.io")
     if err then
         print(err)
     end
     if ws then
         function sendServer(message)
-            ws.send(json.encode({tpye=message, name=os.getComputerLabel(), message=message}))
+            ws.send(json.encode({type='message', name=os.getComputerLabel(), message=message}))
         end
         function sendServerCord(posx, posy, posz, point)
             local success, data = turtle.inspect()
             local success, dataup = turtle.inspectUp()
             local success, datadown = turtle.inspectDown()
-            ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, point=point}))
+            if (cmd.point == '0') then
+                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockposx=posx + 1, blockposz=posz, blockup=dataup.name, blockuppos=posy + 1, blockdown=datadown.name, blockdownpos=posy - 1, point=point}))
+            elseif (cmd.point == '1') then
+                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockpos=posz + 1,blockposx=posz, blockup=dataup.name, blockuppos=posy + 1, blockdown=datadown.name, blockdownpos=posy - 1, point=point}))
+            elseif (cmd.point == '2') then
+                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockpos=posx - 1,blockposz=posz, blockup=dataup.name, blockuppos=posy + 1, blockdown=datadown.name, blockdownpos=posy - 1, point=point}))
+            elseif (cmd.point == '3') then
+                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockpos=posz - 1,blockposx=posz, blockup=dataup.name, blockuppos=posy + 1, blockdown=datadown.name, blockdownpos=posy - 1, point=point}))
+            end
         end
         local message = ws.receive()
         if message == nil then
@@ -74,21 +82,23 @@ local ws, err = http.websocket("ws://475b2262f7de.ngrok.io")
             elseif (cmd.parm == 'right') then
                 turtle.turnRight()
                 if (cmd.point < '3') then
-                    ws.send(json.encode({type='point', point=cmd.point + 1}))
+                    sendServerCord(cmd.posx,cmd.posy,cmd.posz,cmd.point + 1)
                 else
-                    ws.send(json.encode({type='point', point=0}))
+                    sendServerCord(cmd.posx,cmd.posy,cmd.posz,'0')
                 end
             elseif (cmd.parm == 'left') then
                 turtle.turnLeft()
                 if (cmd.point == '0') then
-                    ws.send(json.encode({type='point', point='3'}))
+                    sendServerCord(cmd.posx,cmd.posy,cmd.posz,'3')
                 elseif (cmd.point == '3') then
-                    ws.send(json.encode({type='point', point='2'}))
+                    sendServerCord(cmd.posx,cmd.posy,cmd.posz,'2')
                 elseif (cmd.point == '2') then
-                    ws.send(json.encode({type='point', point='1'}))
+                    sendServerCord(cmd.posx,cmd.posy,cmd.posz,'1')
                 else
-                    ws.send(json.encode({type='point', point='0'}))    
+                    sendServerCord(cmd.posx,cmd.posy,cmd.posz,'0') 
                 end
+            elseif (cmd.parm == 'getblock') then
+                sendServerCord(cmd.posx,cmd.posy,cmd.posz,cmd.point)
             end
         end
        ws.close()

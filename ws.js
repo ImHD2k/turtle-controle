@@ -21,6 +21,16 @@ point = "0";
                   posz = obj.posz;
                   posy = obj.posy;
                   document.getElementById("p1").innerHTML = 'posX : ' + obj.posx + ' | posY : ' + obj.posy + ' | posZ : ' + obj.posz + ' | point : ' + obj.point;
+                  updateTurtlePos();
+                  if (obj.blockdown) {
+                     updateWorld('down',obj.blockdown)
+                  } 
+                  if (obj.block) {
+                     updateWorld('forward',obj.block, obj.blockupposx, obj.blockupposz)
+                  }
+                  if (obj.blockup) {
+                     updateWorld('up',obj.blockup)
+                  }
                } else if (obj.type == 'message') {
                   document.getElementById("p1").innerHTML = 'name : ' + obj.name + ' | message : ' + obj.message;
                }
@@ -39,4 +49,8 @@ point = "0";
 
          function sendCMDmove(move) {
              websocket.send('{"cmd":"move","parm":"' + move + '","posx":"' + posx + '","posz":"' + posz +'","posy":"' + posy + '","point":"' + point + '"}')
+         }
+         
+         function sendCMDgetblock() {
+            websocket.send('{"cmd":"move","parm":"getblock","posx":"' + posx + '","posz":"' + posz +'","posy":"' + posy + '","point":"' + point + '"}')
          }
