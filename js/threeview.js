@@ -53,18 +53,19 @@ function updateTurtlePos() {
 
 
 function updateWorld(type,name,tposx,tposz) {
+    material = new THREE.MeshBasicMaterial({color: 0xff0000});
     if (type == 'forward') {
-        var cube = new THREE.Mesh(new THREE.BoxGeometry(1,1,1));
+        var cube = new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material);
         cube.position.set(tposx, posy, tposz);
         scene.add(cube);
     }
     if (type == 'down') {
-        var cube = new THREE.Mesh(new THREE.BoxGeometry(1,1,1));
+        var cube = new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material);
         cube.position.set(posx, posy - 1, posz);
         scene.add(cube);
     }
     if (type == 'up') {
-        var cube = new THREE.Mesh(new THREE.BoxGeometry(1,1,1));
+        var cube = new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material);
         cube.position.set(posx, posy + 1, posz);
         scene.add(cube);
     }
@@ -75,6 +76,15 @@ function getKey() {
     if ( keyboard.pressed("w") ) 
 	{ 
 		sendCMDmove('forward')
+    }else if ( keyboard.pressed("s") ) 
+	{ 
+		sendCMDmove('back')
+    }else if ( keyboard.pressed("a") ) 
+	{ 
+		sendCMDmove('left')
+    }else if ( keyboard.pressed("d") ) 
+	{ 
+		sendCMDmove('right')
     }
 }
 
