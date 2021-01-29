@@ -23,6 +23,7 @@ point = "0";
                   document.getElementById("p1").innerHTML = 'posX : ' + obj.posx + ' | posY : ' + obj.posy + ' | posZ : ' + obj.posz + ' | point : ' + obj.point;
                   updateTurtlePos();
                   if (obj.blockdown) {
+                     document.cookie = 'down', obj.blockdown, obj.blockposx, obj.blockposz;
                      updateWorld('down',obj.blockdown, obj.blockposx, obj.blockposz)
                   }
                   if (obj.blockup) {
