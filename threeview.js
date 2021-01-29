@@ -3,6 +3,8 @@ var cube;
 var controls;
 const group = new THREE.Group();
 
+var keyboard = new THREEx.KeyboardState();
+
 init();
 animate();
 updateTurtlePos();
@@ -14,15 +16,12 @@ function init()
     var height = window.innerHeight;
     renderer.setSize (width, height);
     document.body.appendChild (renderer.domElement);
+
+    camera = new THREE.PerspectiveCamera(45, width/height, 1, 10000);
+    camera.lookAt (new THREE.Vector3(0,0,0));
+    camera.position.set('10','10','10');
+
     scene = new THREE.Scene();
-    
-    function updateCamera() {
-        camera = new THREE.PerspectiveCamera (45, width/height, 1, 10000);
-        camera.position.y = 10;
-        camera.position.z = 10;
-        camera.lookAt (new THREE.Vector3(0,0,0));
-    }
-    updateCamera();
     
     controls = new THREE.OrbitControls (camera, renderer.domElement);
     
@@ -30,6 +29,8 @@ function init()
     gridXZ.setColors(new THREE.Color(0xff0000), new THREE.Color(0xffffff));
     scene.add(gridXZ);
 }
+
+
 function updateTurtlePos() {
      // start
      function createTurtle(posx, posy, posz) {
@@ -49,6 +50,8 @@ function updateTurtlePos() {
     
     // end
 }
+
+
 function updateWorld(type,name,tposx,tposz) {
     if (type == 'forward') {
         var cube = new THREE.Mesh(new THREE.BoxGeometry(1,1,1));
@@ -66,9 +69,20 @@ function updateWorld(type,name,tposx,tposz) {
         scene.add(cube);
     }
 }
+
+
+function getKey() {
+    if ( keyboard.pressed("w") ) 
+	{ 
+		sendCMDmove('forward')
+    }
+}
+
+
 function animate()
 {
     controls.update();
     requestAnimationFrame ( animate );  
     renderer.render (scene, camera);
+    getKey()
 }

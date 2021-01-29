@@ -13,13 +13,13 @@ local ws, err = http.websocket("ws://bdcfd8093594.ngrok.io")
             local success, dataup = turtle.inspectUp()
             local success, datadown = turtle.inspectDown()
             if (cmd.point == '0') then
-                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx + 1, blockposz=posz,point=point}))
+                ws.send(json.encode({name=os.getComputerLabel(),type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx + 1, blockposz=posz,point=point}))
             elseif (cmd.point == '1') then
-                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx, blockposz=posz + 1,point=point}))
+                ws.send(json.encode({name=os.getComputerLabel(), type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx, blockposz=posz + 1,point=point}))
             elseif (cmd.point == '2') then
-                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx - 1, blockposz=posz,point=point}))
+                ws.send(json.encode({name=os.getComputerLabel(), type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx - 1, blockposz=posz,point=point}))
             elseif (cmd.point == '3') then
-                ws.send(json.encode({type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx, blockposz=posz - 1,point=point}))
+                ws.send(json.encode({name=os.getComputerLabel(), type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx, blockposz=posz - 1,point=point}))
             end
         end
         local message = ws.receive()
