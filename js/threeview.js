@@ -19,7 +19,7 @@ function init()
 
     camera = new THREE.PerspectiveCamera(45, width/height, 1, 10000);
     camera.lookAt (new THREE.Vector3(0,0,0));
-    camera.position.set('10','10','10');
+    camera.position.set('10','10','-10');
 
     scene = new THREE.Scene();
     
@@ -53,7 +53,7 @@ function updateTurtlePos() {
 
 
 function updateWorld(type,name,tposx,tposz) {
-    material = new THREE.MeshBasicMaterial({color: 0xff0000});
+    material = new THREE.MeshBasicMaterial({color: 'green'});
     if (type == 'forward') {
         var cube = new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material);
         cube.position.set(tposx, posy, tposz);
