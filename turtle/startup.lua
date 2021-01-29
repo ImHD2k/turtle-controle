@@ -1,6 +1,6 @@
 os.loadAPI('json')
 while true do
-local ws, err = http.websocket("ws://bdcfd8093594.ngrok.io")
+local ws, err = http.websocket("ws://672685f174ca.ngrok.io")
     if err then
         print(err)
     end
@@ -12,13 +12,13 @@ local ws, err = http.websocket("ws://bdcfd8093594.ngrok.io")
             local success, data = turtle.inspect()
             local success, dataup = turtle.inspectUp()
             local success, datadown = turtle.inspectDown()
-            if (cmd.point == '0') then
+            if (point == '0') then
                 ws.send(json.encode({name=os.getComputerLabel(),type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx + 1, blockposz=posz,point=point}))
-            elseif (cmd.point == '1') then
+            elseif (point == '1') then
                 ws.send(json.encode({name=os.getComputerLabel(), type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx, blockposz=posz + 1,point=point}))
-            elseif (cmd.point == '2') then
+            elseif (point == '2') then
                 ws.send(json.encode({name=os.getComputerLabel(), type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx - 1, blockposz=posz,point=point}))
-            elseif (cmd.point == '3') then
+            elseif (point == '3') then
                 ws.send(json.encode({name=os.getComputerLabel(), type='cord', posx=posx, posy=posy, posz=posz, block=data.name, blockup=dataup.name, blockdown=datadown.name, blockposx=posx, blockposz=posz - 1,point=point}))
             end
         end
@@ -81,9 +81,13 @@ local ws, err = http.websocket("ws://bdcfd8093594.ngrok.io")
                 end        
             elseif (cmd.parm == 'right') then
                 turtle.turnRight()
-                if (cmd.point < '3') then
-                    sendServerCord(cmd.posx,cmd.posy,cmd.posz,cmd.point + 1)
-                else
+                if (cmd.point == '0') then
+                    sendServerCord(cmd.posx,cmd.posy,cmd.posz,'1')
+                elseif (cmd.point == '1') then
+                    sendServerCord(cmd.posx,cmd.posy,cmd.posz,'2')
+                elseif (cmd.point == '2') then
+                    sendServerCord(cmd.posx,cmd.posy,cmd.posz,'3')
+                elseif (cmd.point == '3') then
                     sendServerCord(cmd.posx,cmd.posy,cmd.posz,'0')
                 end
             elseif (cmd.parm == 'left') then
