@@ -1,6 +1,6 @@
 # Turtle Controle
 
-Turtle controle is a GUI HTML interface made with three js for the minecraft mod "CC:Tweaked" froked from "OpenComputer"
+Turtle controle is a GUI HTML interface made with three js for the minecraft mod "[CC:Tweaked](https://www.curseforge.com/minecraft/mc-mods/cc-tweaked)" froked from "[OpenComputer](https://www.curseforge.com/minecraft/mc-mods/opencomputers)"
 
 # How to use
 
